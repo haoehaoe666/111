@@ -1,33 +1,5 @@
-# ChaoXingServerSeat
-超星图书馆座位预约脚本
 
-（由于部分学校新增了点选式行为验证码导致原本的程序会显示验证失败，详细参见issue21[https://github.com/bear-zd/ChaoXingReserveSeat/issues/21]）
-
-## 注意
-
-使用python消除了对js的依赖，请拉取最新版程序运行。
-
-该版本试验性支持滑块验证，目前已经过测试可以使用，如果有滑块验证，请参考下面的**高级设置**部分
-
-## 如何使用
-
-### 本地部署方式
-
-#### 1、安装依赖
-
-运行脚本前先安装一个包
-
-```bash
-pip install cryptography
-```
-
-如果有滑块验证，则需要额外安装numpy和opencv-python
-
-```bash
-pip install numpy, opencv-python
-```
-
-#### 2、 获取roomid（图书馆id）和seatid（座位号）
+#### 1、 获取roomid（图书馆id）和seatid（座位号）
 
 在使用之前需要先在如下获取图书馆对应的id和座位号，下面的配置里已经提供了上海大学图书馆的id。对于不知道id的，可以通过如下方式进行：
 
@@ -39,27 +11,7 @@ pip install numpy, opencv-python
 
 其中的`id=5483`的5483即为对应图书馆的id，将其填写到config.json中，座位联网后自己挑即可（详细填写参见后面的setting）
 
-#### 3、running
-
-由于脚本是检测系统时间为7点时进行预约（在main.py 第16行），如果有特殊要求可以修改。通过 `python main.py` 运行脚本, 添加参数 `-u config.json` 来指明配置文件路径
-
-运行`python main.py -m debug`可以立即运行查看配置是否正确。
-
-关于运行的方式，现在提供了多种运行方式：
-
-- Linux环境下：
-
-在Linux下可以使用如下方式添加crontab , 运行：`crontab -e`添加指令 :`0 7 * * * python3 main.py`
-
-- windows环境下：
-
-windows下使用时间任务:
-
-![](https://zideapicbed.oss-cn-shanghai.aliyuncs.com/QQ%E5%9B%BE%E7%89%8720221120213736.png)
-
-### github actions部署方式（目前应该没有问题了）：
-
-  这种方式可以不需要在本地部署环境，只需要把fork该仓库并修改配置文件即可。
+即可。
 
 1.**fork该仓库**
 
@@ -71,7 +23,7 @@ windows下使用时间任务:
 xxxxxxx,xxxxxxx
 ```
 
-4.**运行action**：在action -> auto_reserve -> run workflows 选择main分支即可。
+2.**运行action**：在action -> auto_reserve -> run workflows 选择main分支即可。
 
 
 ## config配置
